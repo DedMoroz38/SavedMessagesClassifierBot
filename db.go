@@ -6,6 +6,7 @@ import (
 	"saved_messages_classifier/classifier"
 
 	"github.com/jackc/pgx/v5"
+	"github.com/redis/go-redis/v9"
 )
 
 func NewDBService() *classifier.Queries {
@@ -20,4 +21,14 @@ func NewDBService() *classifier.Queries {
 	queries := classifier.New(conn)
 
 	return queries
+}
+
+func NewReidsClient() *redis.Client {
+	redisClient := redis.NewClient(&redis.Options{
+		Addr:     "localhost:6379",
+		Password: "",
+		DB:       0,
+	})
+
+	return redisClient
 }

@@ -1,4 +1,4 @@
-package services
+package controllers
 
 import (
 	"saved_messages_classifier/constants"
